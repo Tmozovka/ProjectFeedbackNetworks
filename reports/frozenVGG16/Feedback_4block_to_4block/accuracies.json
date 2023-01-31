@@ -1,0 +1,5 @@
+{
+    "test_acc_original_data": 0.8439206480979919,
+    "test_acc_gaussian_noise": 0.4015521705150604,
+    "test_acc_salt_pepper_noise": 0.28772637248039246
+}

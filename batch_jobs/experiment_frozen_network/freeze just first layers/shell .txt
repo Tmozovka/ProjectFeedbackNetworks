@@ -1,0 +1,7 @@
+sbatch -p gpu_4 -n 40 -t 10:00:00 --mem 50000 --gres=gpu:4 job_feedback.sh
+sbatch -p dev_gpu_4 -n 40 -t 00:30:00 --mem 50000 --gres=gpu:4 --output=dev_small_blocks.out 4_feedback_run.sh
+sbatch -p dev_gpu_4 -n 40 -t 00:30:00 --mem 50000 --gres=gpu:4 --output=dev_large_block.out large_feedback_run.sh
+
+sbatch -p gpu_4 -n 40 -t 12:00:00 --mem 50000 --gres=gpu:4 --output=small_blocks.out 4_feedback_run.sh
+sbatch -p gpu_4 -n 40 -t 30:00:00 --mem 50000 --gres=gpu:4 --output=large_block.out large_feedback_run.sh
+sbatch -p gpu_4 -n 40 -t 15:00:00 --mem 50000 --gres=gpu:4 --output=large_block.out 10_ep_large_feedback_run.sh
