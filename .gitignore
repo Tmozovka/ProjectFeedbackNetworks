@@ -2,3 +2,7 @@
 **/.ipynb_checkpoints/**
 **/__pycache__/**
 **/**.out
+**/checkpoint.data-00000-of-00001
+**/**.data-00000-of-00001
+**/checkpoint
+**/checkpoint.index

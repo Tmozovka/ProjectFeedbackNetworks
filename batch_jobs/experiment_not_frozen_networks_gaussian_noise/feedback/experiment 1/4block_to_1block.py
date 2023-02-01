@@ -34,10 +34,10 @@ if __name__ == "__main__":
     print("num epochs", epochs)
     print("input_shape", input_shape)
     
-    path_to_persist_results = f"../../../../reports/notFrozenVGG16/VGG16Feedback 4Block To 1Block"
+    path_to_persist_results = f"../../../../reports/notFrozenVGG16TrainGaussianNoise/VGG16Feedback 4Block To 1Block"
     if not os.path.exists(path_to_persist_results):
         os.makedirs(path_to_persist_results)
-    checkpoint_filepath = f'../../../../models/notFrozenVGG16/VGG16Feedback 4Block To 1Block/checkpoint'
+    checkpoint_filepath = f'../../../../models/notFrozenVGG16TrainGaussianNoise/VGG16Feedback 4Block To 1Block/checkpoint'
 
     model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
         filepath=checkpoint_filepath,
@@ -64,7 +64,7 @@ if __name__ == "__main__":
         start_time = time.time()
         model.VGG_before_feedback.trainable = False
         print("Train frozen model")
-        history_frozen = model.fit(train_ds, epochs=5, validation_data=valid_ds, verbose=1) 
+        history_frozen = model.fit(train_ds, epochs=1, validation_data=valid_ds, verbose=1) 
         print("----------------------------------------------------------")
         print("history frozen: ", history_frozen.history)
         print("----------------------------------------------------------")

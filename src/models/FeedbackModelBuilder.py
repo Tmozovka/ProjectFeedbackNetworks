@@ -336,3 +336,50 @@ class VGG16Feedback5BlockTo1Block(keras.Model):
         x = self.dropout(x)
         x = self.output_layer(x)
         return x
+    
+class VGG16Feedback4BlockTo4Block(keras.Model):
+    def __init__(self, **kwargs):
+        super(VGG16FeedbackFrozen4BlockTo4Block, self).__init__(name="FFmodel", **kwargs)
+        VGG = VGG16(weights='imagenet', include_top=False)
+        self.VGG_before_feedback = keras.Model(VGG.input, VGG.layers[-9].output)
+        self.VGG_before_feedback._name = "not_frozen_vgg16"
+        
+        self.b4_conv1 = Conv2D(512, kernel_size=(3,3), padding= 'same', activation= 'relu')
+        self.b4_conv2 = Conv2D(512, kernel_size=(3,3), padding= 'same', activation= 'relu')
+        self.b4_conv3 = Conv2D(512, kernel_size=(3,3), padding= 'same', activation= 'relu')
+        self.b4_maxpooling = MaxPooling2D(pool_size=(2,2), strides= (2,2))
+        self.b5_conv1 = Conv2D(512, kernel_size=(3,3), padding= 'same', activation= 'relu')
+        self.b5_conv2 = Conv2D(512, kernel_size=(3,3), padding= 'same', activation= 'relu')
+        self.b5_conv3 = Conv2D(512, kernel_size=(3,3), padding= 'same', activation= 'relu')
+        self.b5_maxpooling = MaxPooling2D(pool_size=(2,2), strides= (2,2))
+        
+        self.flatten = Flatten()
+        self.dense = Dense(256, activation= 'relu')
+        self.dropout = Dropout(0.5)
+        self.output_layer = Dense(num_classes, activation='softmax')
+
+        self.project_conv1 = Conv2D(256, kernel_size=(3,3), padding= 'same', activation= 'relu')
+
+    def call(self, inputs):
+        num_timesteps = 3
+        x = inputs
+        x_before_fd = self.VGG_before_feedback(x)
+        x = x_before_fd
+        for i in range(num_timesteps):
+            x = self.b4_conv1(x)
+            x = self.b4_conv2(x)
+            x = self.b4_conv3(x)
+            if i != num_timesteps - 1:
+                x = self.project_conv1(x)
+                x = Add()([x_before_fd, x])
+
+        x = self.b4_maxpooling(x)
+        x = self.b5_conv1(x)
+        x = self.b4_conv2(x)
+        x = self.b5_conv3(x)
+        x = self.b5_maxpooling(x)
+        x = self.flatten(x)
+        x = self.dense(x) 
+        x = self.dropout(x)
+        x = self.output_layer(x)
+        return x
