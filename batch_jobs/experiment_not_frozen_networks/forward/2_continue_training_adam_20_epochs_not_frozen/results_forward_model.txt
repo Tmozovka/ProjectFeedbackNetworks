@@ -1,0 +1,12 @@
+test loss
+2.552772283554077
+test acc
+0.14371946454048157
+test loss gaussian
+2.552772283554077
+test acc gaussian
+0.14371946454048157
+test loss salt_pepper
+2.552772283554077
+test acc salt_pepper
+0.14371946454048157
