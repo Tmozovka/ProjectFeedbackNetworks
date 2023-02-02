@@ -1,0 +1,12 @@
+test loss
+0.7691799402236938
+test acc
+0.8870365023612976
+test loss_gaussian_noise
+0.5393985509872437
+test acc_gaussian_noise
+0.9097442030906677
+test loss_salt_pepper_noise
+0.6263506412506104
+test acc_salt_pepper_noise
+0.8792756795883179
