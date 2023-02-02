@@ -64,7 +64,7 @@ if __name__ == "__main__":
         start_time = time.time()
         model.VGG_before_feedback.trainable = False
         print("Train frozen model")
-        history_frozen = model.fit(train_ds, epochs=1, validation_data=valid_ds, verbose=1) 
+        history_frozen = model.fit(train_ds, epochs=5, validation_data=valid_ds, verbose=1) 
         print("----------------------------------------------------------")
         print("history frozen: ", history_frozen.history)
         print("----------------------------------------------------------")
