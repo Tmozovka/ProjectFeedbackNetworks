@@ -1,6 +1,8 @@
 import os
 import numpy as np
 from matplotlib import pyplot as plt
+import seaborn as sns
+import pandas as pd
 import sys
 import json
 #sys.path.append('../')
@@ -50,7 +52,7 @@ def plot_model_history(history, path_to_persist=None):
         print(f'Highest Validation Accuracy: {np.max(val_accuracy)}')
         plt.show()
     
-def run_mcnemar_test(model_1, model_2, test_ds, path_to_persist=None):
+def run_mcnemar_test(model_1, model_2, test_ds, model_1_name = "", model_2_name = ""):
     """
     Source: https://machinelearningmastery.com/mcnemars-test-for-machine-learning/
     """
@@ -64,14 +66,45 @@ def run_mcnemar_test(model_1, model_2, test_ds, path_to_persist=None):
     print('statistic=%.3f, p-value=%.3f' % (result.statistic, result.pvalue))
     # interpret the p-value
     alpha = 0.05
+    eval_res = ""
     if result.pvalue > alpha:
-        print('Same proportions of errors (fail to reject H0)')
+        eval_res = 'Same proportions of errors (fail to reject H0)'
+        models_diff = False
     else:
-        print('Different proportions of errors (reject H0)')
-        
-    if path_to_persist:
-        result = {}
-        
+        eval_res = 'Different proportions of errors (reject H0)'
+        models_diff = True
+      
+    result = {
+        "statistics": result.statistic, 
+        "p-value": result.pvalue,
+        "evaluation_result": eval_res,
+        "models_diff":models_diff,
+        "contingency_table": table,
+        "model_1_name":model_1_name,
+        "model_2_name":model_2_name
+        }
+   
+            
+    return result
+
+
+def persist_mcnemar_test(result, path_to_persist, heatmap_max=4000, model_1_name = "", model_2_name = ""):
+    path_file_test = os.path.join(path_to_persist, "mc_nemar_test.json")
+    path_png_test = os.path.join(path_to_persist, 'mc_nemar_test_result.png')
+    if os.path.exists(path_file_test):
+        os.remove(path_file_test)
+    with open(path_file_test, "a") as write_file:
+        json.dump(result, write_file, indent=4)
+
+    df = pd.DataFrame(result['contingency_table'],\
+                      columns=['Model 2 correct', 'Model 2 incorrect'],\
+                      index=['Model 1 correct', 'Model 1 incorrect'])
+    ax = sns.heatmap(df, annot=True, fmt=".0f", vmin=0, vmax=heatmap_max)
+    ax.set(xlabel="", ylabel="", title=f"McNemar test between:\n Model 1: {model_1_name} \n Model 2: {model_2_name} \n Result: {result['evaluation_result']}\n")
+    ax.xaxis.tick_top()
+    ax.figure.set_tight_layout(True)
+    plt.savefig(path_png_test)
+    
 
 def create_contingency_table(model_1, model_2, test_ds):
     X_test = list(map(lambda x: x[0], test_ds))
@@ -85,7 +118,7 @@ def create_contingency_table(model_1, model_2, test_ds):
     for batch_idx in range(len(X_test)):
         predict_batch_model_1 = model_1.predict(X_test[batch_idx])
         predict_batch_model_2 = model_2.predict(X_test[batch_idx])
-        for idx in range(len(X_test[0])):
+        for idx in range(len(predict_batch_model_1)):
             prediction_1 = np.where(predict_batch_model_1[idx] == max(predict_batch_model_1[idx]))
             prediction_2 = np.where(predict_batch_model_2[idx] == max(predict_batch_model_2[idx]))
             right_prediction = y_test[batch_idx][idx]

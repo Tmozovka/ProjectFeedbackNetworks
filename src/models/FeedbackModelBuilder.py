@@ -339,7 +339,7 @@ class VGG16Feedback5BlockTo1Block(keras.Model):
     
 class VGG16Feedback4BlockTo4Block(keras.Model):
     def __init__(self, **kwargs):
-        super(VGG16FeedbackFrozen4BlockTo4Block, self).__init__(name="FFmodel", **kwargs)
+        super(VGG16Feedback4BlockTo4Block, self).__init__(name="FFmodel", **kwargs)
         VGG = VGG16(weights='imagenet', include_top=False)
         self.VGG_before_feedback = keras.Model(VGG.input, VGG.layers[-9].output)
         self.VGG_before_feedback._name = "not_frozen_vgg16"
