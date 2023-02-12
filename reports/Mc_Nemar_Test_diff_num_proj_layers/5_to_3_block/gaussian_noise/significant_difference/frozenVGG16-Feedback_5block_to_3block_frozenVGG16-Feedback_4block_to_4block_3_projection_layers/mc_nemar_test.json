@@ -1,0 +1,18 @@
+{
+    "statistics": 180.0,
+    "p-value": 4.421089393246036e-07,
+    "evaluation_result": "Different proportions of errors (reject H0)",
+    "models_diff": true,
+    "contingency_table": [
+        [
+            723,
+            180
+        ],
+        [
+            290,
+            2286
+        ]
+    ],
+    "model_1_name": "frozenVGG16-Feedback_5block_to_3block",
+    "model_2_name": "frozenVGG16-Feedback_4block_to_4block_3_projection_layers"
+}

@@ -3,3 +3,6 @@ sbatch -p gpu_4 -n 40 -t 30:00:00 --mem 50000 --gres=gpu:4 --output=gpu4_compare
 
 sbatch -p gpu_4 -n 40 -t 30:00:00 --mem 50000 --gres=gpu:4 --output=gpu4_compare_diff_proj_4_to_1.out diff_proj_4_1.sh
 
+
+sbatch -p gpu_4 -n 40 -t 30:00:00 --mem 50000 --gres=gpu:4 --output=gpu_4_5_to_1.out 5_to_1_feedback.sh
+
