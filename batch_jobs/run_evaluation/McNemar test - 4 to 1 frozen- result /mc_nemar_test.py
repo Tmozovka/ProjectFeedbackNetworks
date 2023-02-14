@@ -64,12 +64,12 @@ if __name__ == "__main__":
     all_result = dict()
     with strategy.scope():
         test_ds_prepared_without_batch = tf.data.Dataset.load(os.path.join(path_to_datasets, "test_ds_without_batching"))
-        test_ds = test_ds_prepared_without_batch.map(tf_gaussian_noise).batch(batch_size).prefetch(4)
+        test_ds = test_ds_prepared_without_batch.map(tf_salt_pepper_noise).batch(batch_size).prefetch(4)
         test_ds_gaussian_noise = test_ds_prepared_without_batch.map(tf_gaussian_noise).batch(batch_size).prefetch(4)
         test_ds_salt_pepper_noise = test_ds_prepared_without_batch.map(tf_salt_pepper_noise).batch(batch_size).prefetch(4)
         len_ds = len(test_ds_prepared_without_batch)
         
-        path_to_persist = "../../../reports/Mc_Nemar_Test_result_presentation/4_to_1_block/gaussian_noise/"
+        path_to_persist = "../../../reports/Mc_Nemar_Test_result_presentation/4_to_1_block/salt_and_pepper_noise/"
         merger = PdfMerger()
         
         for model_1, model_2 in itertools.combinations([(k,v) for k,v in name_model_path.items()], 2):

@@ -5,4 +5,4 @@
 #SBATCH --gres=gpu:4
 source ../../../../tfds2/bin/activate
 pwd
-python compare_diff_projections.py
+python compare_diff_projections_4_to_1.py

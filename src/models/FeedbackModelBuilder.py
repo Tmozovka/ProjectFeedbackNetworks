@@ -289,7 +289,7 @@ class VGG16FeedbackFrozen4BlockTo1Block(keras.Model):
     
 class VGG16FeedbackFrozen4BlockTo1Block1ProjLayer(keras.Model):
     def __init__(self, **kwargs):
-        super(VGG16FeedbackFrozen4BlockTo1Block_1_proj_layer, self).__init__(name="FFmodel", **kwargs)
+        super(VGG16FeedbackFrozen4BlockTo1Block1ProjLayer, self).__init__(name="FFmodel", **kwargs)
         VGG = VGG16(weights='imagenet', include_top=False)
         self.VGG_before_feedback = keras.Model(VGG.input, VGG.layers[-6].output)
         self.VGG_before_feedback.trainable = False
@@ -308,7 +308,6 @@ class VGG16FeedbackFrozen4BlockTo1Block1ProjLayer(keras.Model):
         self.upsampling = UpSampling3D(size=8)
         self.project_conv1 = Conv2D(3, kernel_size=(3,3), padding= 'same', activation= 'relu')
         
-        self.projection_3_layers = projection_3_layers
 
     def call(self, inputs):
         num_timesteps = 3
@@ -334,7 +333,7 @@ class VGG16FeedbackFrozen4BlockTo1Block1ProjLayer(keras.Model):
     
 class VGG16FeedbackFrozen4BlockTo1Block2ProjLayers(keras.Model):
     def __init__(self, **kwargs):
-        super(VGG16FeedbackFrozen4BlockTo1Block_2_proj_layer, self).__init__(name="FFmodel", **kwargs)
+        super(VGG16FeedbackFrozen4BlockTo1Block2ProjLayers, self).__init__(name="FFmodel", **kwargs)
         VGG = VGG16(weights='imagenet', include_top=False)
         self.VGG_before_feedback = keras.Model(VGG.input, VGG.layers[-6].output)
         self.VGG_before_feedback.trainable = False
@@ -354,7 +353,6 @@ class VGG16FeedbackFrozen4BlockTo1Block2ProjLayers(keras.Model):
         self.project_conv1 = Conv2D(3, kernel_size=(3,3), padding= 'same', activation= 'relu')
         self.project_conv2 = Conv2D(3, kernel_size=(3,3), padding= 'same', activation= 'relu')
         
-        self.projection_3_layers = projection_3_layers
 
     def call(self, inputs):
         num_timesteps = 3

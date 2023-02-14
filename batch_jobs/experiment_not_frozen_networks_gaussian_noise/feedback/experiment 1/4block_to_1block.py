@@ -47,8 +47,8 @@ if __name__ == "__main__":
         save_best_only=True)
 
     with strategy.scope():
-        train_ds = train_ds_prepared_without_batch.shuffle(10000).batch(batch_size).prefetch(4)
-        valid_ds = valid_ds_prepared_without_batch.batch(batch_size).prefetch(4)
+        train_ds = train_ds_prepared_without_batch.map(tf_gaussian_noise).shuffle(10000).batch(batch_size).prefetch(4)
+        valid_ds = valid_ds_prepared_without_batch.map(tf_gaussian_noise).batch(batch_size).prefetch(4)
         test_ds = test_ds_prepared_without_batch.batch(batch_size).prefetch(4)
         test_ds_gaussian_noise = test_ds_prepared_without_batch.map(tf_gaussian_noise).batch(batch_size).prefetch(4)
         test_ds_salt_pepper_noise = test_ds_prepared_without_batch.map(tf_salt_pepper_noise).batch(batch_size).prefetch(4)
