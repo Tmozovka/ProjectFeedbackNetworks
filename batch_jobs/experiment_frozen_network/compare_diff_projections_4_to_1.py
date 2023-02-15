@@ -1,7 +1,7 @@
 import sys
 sys.path.append('../../')
 import tensorflow as tf
-from src.models.FeedbackModelBuilder import VGG16FeedbackFrozen5BlockTo3Block3ProjLayers, VGG16FeedbackFrozen5BlockTo3Block2ProjLayers
+from src.models.FeedbackModelBuilder import VGG16FeedbackFrozen4BlockTo1Block1ProjLayer, VGG16FeedbackFrozen4BlockTo1Block2ProjLayers
 from training_procedure import run_training
 
 path_to_datasets = '../../../../experiments/create_datasets/normalize_dataset/saved_datasets/'
