@@ -1,0 +1,170 @@
+{
+    "original_data": {
+        "frozenVGG16-Feedback_5block_to_3block_frozenVGG16-Feedback_4block_to_4block_3_projection_layers": {
+            "statistics": 208.0,
+            "p-value": 0.8454627646602132,
+            "evaluation_result": "Same proportions of errors (fail to reject H0)",
+            "models_diff": false,
+            "contingency_table": [
+                [
+                    2514,
+                    208
+                ],
+                [
+                    213,
+                    544
+                ]
+            ],
+            "model_1_name": "frozenVGG16-Feedback_5block_to_3block",
+            "model_2_name": "frozenVGG16-Feedback_4block_to_4block_3_projection_layers"
+        },
+        "frozenVGG16-Feedback_5block_to_3block_frozenVGG16-Feedback_4block_to_1block_2_projection_layers": {
+            "statistics": 192.0,
+            "p-value": 0.19961383078793093,
+            "evaluation_result": "Same proportions of errors (fail to reject H0)",
+            "models_diff": false,
+            "contingency_table": [
+                [
+                    2503,
+                    219
+                ],
+                [
+                    192,
+                    565
+                ]
+            ],
+            "model_1_name": "frozenVGG16-Feedback_5block_to_3block",
+            "model_2_name": "frozenVGG16-Feedback_4block_to_1block_2_projection_layers"
+        },
+        "frozenVGG16-Feedback_4block_to_4block_3_projection_layers_frozenVGG16-Feedback_4block_to_1block_2_projection_layers": {
+            "statistics": 191.0,
+            "p-value": 0.1275156936165109,
+            "evaluation_result": "Same proportions of errors (fail to reject H0)",
+            "models_diff": false,
+            "contingency_table": [
+                [
+                    2504,
+                    223
+                ],
+                [
+                    191,
+                    561
+                ]
+            ],
+            "model_1_name": "frozenVGG16-Feedback_4block_to_4block_3_projection_layers",
+            "model_2_name": "frozenVGG16-Feedback_4block_to_1block_2_projection_layers"
+        }
+    },
+    "gaussian_noise": {
+        "frozenVGG16-Feedback_5block_to_3block_frozenVGG16-Feedback_4block_to_4block_3_projection_layers": {
+            "statistics": 180.0,
+            "p-value": 4.421089393246036e-07,
+            "evaluation_result": "Different proportions of errors (reject H0)",
+            "models_diff": true,
+            "contingency_table": [
+                [
+                    723,
+                    180
+                ],
+                [
+                    290,
+                    2286
+                ]
+            ],
+            "model_1_name": "frozenVGG16-Feedback_5block_to_3block",
+            "model_2_name": "frozenVGG16-Feedback_4block_to_4block_3_projection_layers"
+        },
+        "frozenVGG16-Feedback_5block_to_3block_frozenVGG16-Feedback_4block_to_1block_2_projection_layers": {
+            "statistics": 110.0,
+            "p-value": 1.7210600831063694e-34,
+            "evaluation_result": "Different proportions of errors (reject H0)",
+            "models_diff": true,
+            "contingency_table": [
+                [
+                    791,
+                    110
+                ],
+                [
+                    373,
+                    2205
+                ]
+            ],
+            "model_1_name": "frozenVGG16-Feedback_5block_to_3block",
+            "model_2_name": "frozenVGG16-Feedback_4block_to_1block_2_projection_layers"
+        },
+        "frozenVGG16-Feedback_4block_to_4block_3_projection_layers_frozenVGG16-Feedback_4block_to_1block_2_projection_layers": {
+            "statistics": 227.0,
+            "p-value": 2.3093253102660135e-07,
+            "evaluation_result": "Different proportions of errors (reject H0)",
+            "models_diff": true,
+            "contingency_table": [
+                [
+                    813,
+                    227
+                ],
+                [
+                    352,
+                    2087
+                ]
+            ],
+            "model_1_name": "frozenVGG16-Feedback_4block_to_4block_3_projection_layers",
+            "model_2_name": "frozenVGG16-Feedback_4block_to_1block_2_projection_layers"
+        }
+    },
+    "salt_and_pepper_noise": {
+        "frozenVGG16-Feedback_5block_to_3block_frozenVGG16-Feedback_4block_to_4block_3_projection_layers": {
+            "statistics": 137.0,
+            "p-value": 5.311705984122056e-12,
+            "evaluation_result": "Different proportions of errors (reject H0)",
+            "models_diff": true,
+            "contingency_table": [
+                [
+                    492,
+                    137
+                ],
+                [
+                    277,
+                    2573
+                ]
+            ],
+            "model_1_name": "frozenVGG16-Feedback_5block_to_3block",
+            "model_2_name": "frozenVGG16-Feedback_4block_to_4block_3_projection_layers"
+        },
+        "frozenVGG16-Feedback_5block_to_3block_frozenVGG16-Feedback_4block_to_1block_2_projection_layers": {
+            "statistics": 48.0,
+            "p-value": 1.987648022207666e-31,
+            "evaluation_result": "Different proportions of errors (reject H0)",
+            "models_diff": true,
+            "contingency_table": [
+                [
+                    580,
+                    48
+                ],
+                [
+                    238,
+                    2613
+                ]
+            ],
+            "model_1_name": "frozenVGG16-Feedback_5block_to_3block",
+            "model_2_name": "frozenVGG16-Feedback_4block_to_1block_2_projection_layers"
+        },
+        "frozenVGG16-Feedback_4block_to_4block_3_projection_layers_frozenVGG16-Feedback_4block_to_1block_2_projection_layers": {
+            "statistics": 218.0,
+            "p-value": 0.08112695001854975,
+            "evaluation_result": "Same proportions of errors (fail to reject H0)",
+            "models_diff": false,
+            "contingency_table": [
+                [
+                    552,
+                    218
+                ],
+                [
+                    257,
+                    2452
+                ]
+            ],
+            "model_1_name": "frozenVGG16-Feedback_4block_to_4block_3_projection_layers",
+            "model_2_name": "frozenVGG16-Feedback_4block_to_1block_2_projection_layers"
+        }
+    }
+}
