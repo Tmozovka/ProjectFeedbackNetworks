@@ -1,5 +1,5 @@
 sbatch -p dev_gpu_4 -n 40 -t 00:30:00 --mem 50000 --gres=gpu:4 --output=dev_gpu4_4block_to_1block_continue_training.out not_fr_feedback_continue_training.sh
 sbatch -p gpu_4 -n 40 -t 20:00:00 --mem 50000 --gres=gpu:4 --output=gpu4_4block_to_1block_continue_training.out not_fr_feedback_continue_training.sh
 
-sbatch -p dev_gpu_4 -n 40 -t 00:30:00 --mem 50000 --gres=gpu:4 --output=dev_gpu4_4block_to_1block.out g4_not_fr_feedback.sh
-sbatch -p gpu_4 -n 40 -t 20:00:00 --mem 50000 --gres=gpu:4 --output=gpu4_4block_to_1block.out g4_not_fr_feedback.sh
+sbatch -p dev_gpu_4 -n 40 -t 00:30:00 --mem 50000 --gres=gpu:4 --output=dev_gpu4_4block_to_4block.out g4_not_fr_feedback.sh
+sbatch -p gpu_4 -n 40 -t 25:00:00 --mem 50000 --gres=gpu:4 --output=gpu4_4block_to_4block.out g4_not_fr_feedback.sh

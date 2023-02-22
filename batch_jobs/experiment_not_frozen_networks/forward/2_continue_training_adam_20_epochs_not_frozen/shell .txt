@@ -1,0 +1,2 @@
+sbatch -p dev_gpu_4 -n 40 -t 00:15:00 --mem 30000 --gres=gpu:4 job_forward.sh
+sbatch -p gpu_4 -n 40 -t 04:00:00 --mem 30000 --gres=gpu:4 job_forward.sh

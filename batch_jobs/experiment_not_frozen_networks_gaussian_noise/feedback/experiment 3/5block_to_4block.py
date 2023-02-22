@@ -7,7 +7,7 @@ import logging
 from src.Helper import append_to_file
 from src.DatasetNoise import tf_gaussian_noise, tf_salt_pepper_noise
 from src.Evaluation import persist_evaluation_results
-from src.models.FeedbackModelBuilder import VGG16Feedback4BlockTo4Block, VGG16FeedbackFrozen4BlockTo4Block
+from src.models.FeedbackModelBuilder import VGG16FeedbackFrozen5BlockTo4Block
 
 os.environ["XLA_FLAGS"] = "--xla_gpu_cuda_data_dir=/opt/bwhpc/common/devel/cuda/11.8"
 
@@ -34,10 +34,10 @@ if __name__ == "__main__":
     print("num epochs", epochs)
     print("input_shape", input_shape)
     
-    path_to_persist_results = f"../../../../reports/notFrozenVGG16TrainGaussianNoise/VGG16Feedback 4Block To 4Block"
+    path_to_persist_results = f"../../../../reports/notFrozenVGG16TrainGaussianNoise/VGG16Feedback 5Block To 4Block"
     if not os.path.exists(path_to_persist_results):
         os.makedirs(path_to_persist_results)
-    checkpoint_filepath = f'../../../../models/notFrozenVGG16TrainGaussianNoise/VGG16Feedback 4Block To 4Block/checkpoint'
+    checkpoint_filepath = f'../../../../models/notFrozenVGG16TrainGaussianNoise/VGG16Feedback 5Block To 4Block/checkpoint'
 
     model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
         filepath=checkpoint_filepath,
@@ -54,7 +54,7 @@ if __name__ == "__main__":
         test_ds_salt_pepper_noise = test_ds_prepared_without_batch.map(tf_salt_pepper_noise).batch(batch_size).prefetch(4)
 
         sample = next(iter(test_ds))[0]
-        model = VGG16Feedback4BlockTo4Block()
+        model = VGG16FeedbackFrozen5BlockTo4Block()
         model.build(input_shape)
         model(sample)
         model.summary(show_trainable=True)

@@ -29,7 +29,7 @@ if __name__ == "__main__":
     num_classes = 16
     img_size = 224
     input_shape = (None, img_size, img_size, 3) 
-    epochs= 20
+    epochs= 10
     print("batch_size", batch_size)
     print("num epochs", epochs)
     print("input_shape", input_shape)
@@ -47,8 +47,8 @@ if __name__ == "__main__":
         save_best_only=True)
 
     with strategy.scope():
-        train_ds = train_ds_prepared_without_batch.shuffle(10000).batch(batch_size).prefetch(4)
-        valid_ds = valid_ds_prepared_without_batch.batch(batch_size).prefetch(4)
+        train_ds = train_ds_prepared_without_batch.map(tf_gaussian_noise).shuffle(10000).batch(batch_size).prefetch(4)
+        valid_ds = valid_ds_prepared_without_batch.map(tf_gaussian_noise).batch(batch_size).prefetch(4)
         test_ds = test_ds_prepared_without_batch.batch(batch_size).prefetch(4)
         test_ds_gaussian_noise = test_ds_prepared_without_batch.map(tf_gaussian_noise).batch(batch_size).prefetch(4)
         test_ds_salt_pepper_noise = test_ds_prepared_without_batch.map(tf_salt_pepper_noise).batch(batch_size).prefetch(4)
@@ -64,7 +64,7 @@ if __name__ == "__main__":
         start_time = time.time()
         model.VGG_before_feedback.trainable = False
         print("Train frozen model")
-        history_frozen = model.fit(train_ds, epochs=5, validation_data=valid_ds, verbose=1) 
+        history_frozen = model.fit(train_ds, epochs=3, validation_data=valid_ds, verbose=1) 
         print("----------------------------------------------------------")
         print("history frozen: ", history_frozen.history)
         print("----------------------------------------------------------")

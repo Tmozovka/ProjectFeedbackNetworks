@@ -1,0 +1,5 @@
+sbatch -p dev_gpu_4 -n 40 -t 00:10:00 --mem 50000 --gres=gpu:4 --output=dev_no_5_forward.out no_5_forward.sh
+sbatch -p dev_gpu_4 -n 40 -t 00:10:00 --mem 50000 --gres=gpu:4 --output=dev_no_5_forward.out no_43_forward.sh
+sbatch -p gpu_4 -n 40 -t 12:00:00 --mem 50000 --gres=gpu:4 --output=no_5_forward.out no_5_forward.sh
+sbatch -p gpu_4 -n 40 -t 12:00:00 --mem 50000 --gres=gpu:4 --output=no_5_forward.out no_43_forward.sh
+
