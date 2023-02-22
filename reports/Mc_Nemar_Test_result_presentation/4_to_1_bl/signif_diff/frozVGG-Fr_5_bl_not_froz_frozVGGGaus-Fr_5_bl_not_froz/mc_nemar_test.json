@@ -1,0 +1,18 @@
+{
+    "statistics": 107.0,
+    "p-value": 1.12790442736742e-52,
+    "evaluation_result": "Different proportions of errors (reject H0)",
+    "models_diff": true,
+    "contingency_table": [
+        [
+            2589,
+            458
+        ],
+        [
+            107,
+            325
+        ]
+    ],
+    "model_1_name": "frozenVGG16-Forward_5_block_not_frozen",
+    "model_2_name": "frozenVGG16TrainGaussianNoise-Forward_5_block_not_frozen"
+}
