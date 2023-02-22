@@ -3,6 +3,6 @@
 #SBATCH --time=10:00:00
 #SBATCH --mem=50000
 #SBATCH --gres=gpu:4
-source ../../../../tfds2/bin/activate
+source ../../../../../tfds2/bin/activate
 pwd
-python large_feedback_block.py
+python mc_nemar_test.py
