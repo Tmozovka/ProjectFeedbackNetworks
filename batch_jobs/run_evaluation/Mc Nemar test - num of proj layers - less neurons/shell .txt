@@ -1,0 +1,3 @@
+sbatch -p dev_gpu_4 -n 40 -t 00:30:00 --mem 50000 --gres=gpu:4 --output=dev_gpu4_nemar_test.out nemar_test.sh
+
+sbatch -p gpu_4 -n 40 -t 30:00:00 --mem 50000 --gres=gpu:4 --output=gpu4_nemar_test.out nemar_test.sh
