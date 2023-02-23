@@ -1,0 +1,110 @@
+{
+    "frozenVGG16-Feedback_4block_to_1block_frozenVGG16TrainGaussianNoise-Feedback_4block_to_1block": {
+        "statistics": 160.0,
+        "p-value": 3.468893437790082e-140,
+        "evaluation_result": "Different proportions of errors (reject H0)",
+        "models_diff": true,
+        "contingency_table": [
+            [
+                1818,
+                160
+            ],
+            [
+                963,
+                538
+            ]
+        ],
+        "model_1_name": "frozenVGG16-Feedback_4block_to_1block",
+        "model_2_name": "frozenVGG16TrainGaussianNoise-Feedback_4block_to_1block"
+    },
+    "frozenVGG16-Feedback_4block_to_1block_frozenVGG16-Forward_5_block_not_frozen": {
+        "statistics": 261.0,
+        "p-value": 0.34600837132448353,
+        "evaluation_result": "Same proportions of errors (fail to reject H0)",
+        "models_diff": false,
+        "contingency_table": [
+            [
+                1719,
+                261
+            ],
+            [
+                284,
+                1215
+            ]
+        ],
+        "model_1_name": "frozenVGG16-Feedback_4block_to_1block",
+        "model_2_name": "frozenVGG16-Forward_5_block_not_frozen"
+    },
+    "frozenVGG16-Feedback_4block_to_1block_frozenVGG16TrainGaussianNoise-Forward_5_block_not_frozen": {
+        "statistics": 157.0,
+        "p-value": 1.3420374082369105e-130,
+        "evaluation_result": "Different proportions of errors (reject H0)",
+        "models_diff": true,
+        "contingency_table": [
+            [
+                1842,
+                157
+            ],
+            [
+                915,
+                565
+            ]
+        ],
+        "model_1_name": "frozenVGG16-Feedback_4block_to_1block",
+        "model_2_name": "frozenVGG16TrainGaussianNoise-Forward_5_block_not_frozen"
+    },
+    "frozenVGG16TrainGaussianNoise-Feedback_4block_to_1block_frozenVGG16-Forward_5_block_not_frozen": {
+        "statistics": 137.0,
+        "p-value": 4.038052053085101e-145,
+        "evaluation_result": "Different proportions of errors (reject H0)",
+        "models_diff": true,
+        "contingency_table": [
+            [
+                1858,
+                929
+            ],
+            [
+                137,
+                555
+            ]
+        ],
+        "model_1_name": "frozenVGG16TrainGaussianNoise-Feedback_4block_to_1block",
+        "model_2_name": "frozenVGG16-Forward_5_block_not_frozen"
+    },
+    "frozenVGG16TrainGaussianNoise-Feedback_4block_to_1block_frozenVGG16TrainGaussianNoise-Forward_5_block_not_frozen": {
+        "statistics": 164.0,
+        "p-value": 0.28434396436399056,
+        "evaluation_result": "Same proportions of errors (fail to reject H0)",
+        "models_diff": false,
+        "contingency_table": [
+            [
+                2601,
+                185
+            ],
+            [
+                164,
+                529
+            ]
+        ],
+        "model_1_name": "frozenVGG16TrainGaussianNoise-Feedback_4block_to_1block",
+        "model_2_name": "frozenVGG16TrainGaussianNoise-Forward_5_block_not_frozen"
+    },
+    "frozenVGG16-Forward_5_block_not_frozen_frozenVGG16TrainGaussianNoise-Forward_5_block_not_frozen": {
+        "statistics": 106.0,
+        "p-value": 2.888446325082917e-160,
+        "evaluation_result": "Different proportions of errors (reject H0)",
+        "models_diff": true,
+        "contingency_table": [
+            [
+                1866,
+                106
+            ],
+            [
+                911,
+                596
+            ]
+        ],
+        "model_1_name": "frozenVGG16-Forward_5_block_not_frozen",
+        "model_2_name": "frozenVGG16TrainGaussianNoise-Forward_5_block_not_frozen"
+    }
+}
