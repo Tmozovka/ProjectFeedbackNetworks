@@ -35,7 +35,7 @@ def plot_model_history(history, path_to_persist=None):
     axis[0].set_title('Training and Validation Loss')
     axis[0].set_xlabel('Epoch')
     axis[0].set_ylabel('Loss Value')
-    axis[0].set_ylim([0, 2])
+    axis[0].set_ylim([0, 3])
     axis[0].legend()
 
     axis[1].plot(eps, accuracy, 'r', label='Training accuracy')
