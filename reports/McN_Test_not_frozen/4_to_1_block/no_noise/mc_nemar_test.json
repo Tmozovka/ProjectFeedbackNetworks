@@ -1,0 +1,20 @@
+{
+    "notFrVGG16-Fb_4bl_to_1bl_notFrVGG16": {
+        "statistics": 70.0,
+        "p-value": 9.979472352378372e-08,
+        "evaluation_result": "Different proportions of errors (reject H0)",
+        "models_diff": true,
+        "contingency_table": [
+            [
+                3116,
+                70
+            ],
+            [
+                149,
+                144
+            ]
+        ],
+        "model_1_name": "notFrVGG16-Fb_4bl_to_1bl",
+        "model_2_name": "notFrVGG16"
+    }
+}
