@@ -27,16 +27,15 @@ if __name__ == "__main__":
     num_classes = 16
     img_size = 224
     input_shape = (None, img_size, img_size, 3) 
-    epochs= 20
+    epochs= 10
     print("batch_size", batch_size)
     print("num epochs", epochs)
     print("input_shape", input_shape)
     
-    checkpoint_filepath_frozen = '../../../models/frozenVGG16/Feedback 4Block To 1Block 20 epochs adam opt/checkpoint'
-    path_to_persist_results = f"../../../reports/notFrozenVGG16/VGG16Feedback 4Block To 1Block"
+    path_to_persist_results = f"../../../reports/notFrozenVGG16/VGG16Feedback 4Block To 1Block 10 epochs"
     if not os.path.exists(path_to_persist_results):
         os.makedirs(path_to_persist_results)
-    checkpoint_filepath = f'../../models/frozenVGG16/VGG16Feedback 4Block To 1Block/checkpoint'
+    checkpoint_filepath = f'../../models/notFrozenVGG16/VGG16Feedback 4Block To 1Block 10 epochs/checkpoint'
     model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
         filepath=checkpoint_filepath,
         save_weights_only=True,
@@ -51,30 +50,15 @@ if __name__ == "__main__":
         test_ds_gaussian_noise = test_ds_prepared_without_batch.map(tf_gaussian_noise).batch(batch_size).prefetch(4)
         test_ds_salt_pepper_noise = test_ds_prepared_without_batch.map(tf_salt_pepper_noise).batch(batch_size).prefetch(4)
 
-    
         sample = next(iter(test_ds))[0]
         model = VGG16Feedback4BlockTo1Block()
         model.build(input_shape)
         model(sample)
         model.summary(show_trainable=True)
         
-        model_frozen = VGG16FeedbackFrozen4BlockTo1Block()
-        model_frozen.build(input_shape)
-        model_frozen(sample)
-        model_frozen.summary(show_trainable=True)
-        model_frozen.load_weights(checkpoint_filepath_frozen)
 
         model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=0.001), loss='sparse_categorical_crossentropy', metrics=["accuracy"])
         start_time = time.time()
-        model.dense.set_weights(model_frozen.dense.get_weights())
-        model.conv1.set_weights(model_frozen.conv1.get_weights())
-        model.conv2.set_weights(model_frozen.conv2.get_weights())
-        model.conv3.set_weights(model_frozen.conv3.get_weights())
-        model.project_conv1.set_weights(model_frozen.project_conv1.get_weights())
-        model.project_conv2.set_weights(model_frozen.project_conv2.get_weights())
-        model.project_conv3.set_weights(model_frozen.project_conv3.get_weights())
-        model.output_layer.set_weights(model_frozen.output_layer.get_weights())
-        
         history = model.fit(train_ds, epochs=epochs, validation_data=valid_ds, callbacks=[model_checkpoint_callback], verbose=1) 
         execution_time = time.time() - start_time
         results = model.evaluate(test_ds, batch_size=batch_size)
