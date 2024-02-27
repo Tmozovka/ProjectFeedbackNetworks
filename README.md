@@ -1,7 +1,7 @@
 # ProjectFeedbackNetworks
 
 This repository includes the implementation of the student project work "Feedback and Forward networks for object recognition
-on the data with different noise types" at the University Ulm. The information about the project is provided at the [report]([doc:linking-to-pages#anchor-links](https://github.com/Tmozovka/ProjectFeedbackNetworks/blob/master/Report_Feedback_and_Forward_networks_for_object_recognition%20(1).pdf)).
+on the data with different noise types" at the University Ulm. The information about the project is provided at the [report](https://github.com/Tmozovka/ProjectFeedbackNetworks/blob/master/Report_Feedback_and_Forward_networks_for_object_recognition%20(1).pdf).
 
 ## Usage
 
